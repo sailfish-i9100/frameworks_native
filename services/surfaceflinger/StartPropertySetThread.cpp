@@ -29,10 +29,11 @@ status_t StartPropertySetThread::Start() {
 bool StartPropertySetThread::threadLoop() {
     // Set property service.sf.present_timestamp, consumer need check its readiness
     property_set(kTimestampProperty, mTimestampPropertyValue ? "1" : "0");
+    // Don't start the Android bootanimation in SFOS even if SurfaceFlinger is used.
     // Clear BootAnimation exit flag
-    property_set("service.bootanim.exit", "0");
+    //property_set("service.bootanim.exit", "0");
     // Start BootAnimation if not started
-    property_set("ctl.start", "bootanim");
+    //property_set("ctl.start", "bootanim");
     // Exit immediately
     return false;
 }

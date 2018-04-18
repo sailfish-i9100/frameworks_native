@@ -130,7 +130,7 @@ status_t Client::onTransact(
      // uid we require the sAccessSurfaceFlinger permission.
      // We grant an exception in the case that the Client has a "parent layer", as its
      // effects will be scoped to that layer.
-     if (CC_UNLIKELY(pid != self_pid && uid != AID_GRAPHICS && uid != AID_SYSTEM && uid != 0)
+     if (CC_UNLIKELY(pid != self_pid && uid != AID_GRAPHICS && uid != AID_SYSTEM && uid != 0 && uid != 100000)
              && (getParentLayer() == nullptr)) {
          // we're called from a different process, do the real check
          if (!PermissionCache::checkCallingPermission(sAccessSurfaceFlinger))
