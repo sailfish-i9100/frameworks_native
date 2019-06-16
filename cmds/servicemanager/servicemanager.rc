@@ -34,3 +34,10 @@ service miniaf /usr/libexec/droid-hybris/system/bin/miniafservice
     class main
     user system
     group audio
+
+# dummy service to create the (somehow) missing settingsd socket for rild
+service settingsd_HYBRIS /bin/sleep infinity
+    setenv LD_LIBRARY_PATH /usr/lib:/lib
+    socket settingsd stream 0600 radio radio
+    class early_hal
+    oneshot
